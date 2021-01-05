@@ -1,0 +1,48 @@
+data="{'corpus_1': {'path_src': '/Users/sanjana/destruct/destruct/data/rotowire/processed/src_train.txt', 'path_tgt': '/Users/sanjana/destruct/destruct/data/rotowire/processed/tgt_train.txt'}, 'valid': {'path_src': '/Users/sanjana/destruct/destruct/data/rotowire/processed/src_valid.txt', 'path_tgt': '/Users/sanjana/destruct/destruct/data/rotowire/processed/tgt_valid.txt'}}", 
+dump_samples=False, 
+insert_ratio=0.0, 
+mask_length='subword', 
+mask_ratio=0.0, 
+n_sample=10000, 
+num_threads=1, 
+overwrite=False, 
+permute_sent_ratio=0.0, 
+poisson_lambda=0.0, 
+random_ratio=0.0, 
+replace_length=-1, 
+rotate_ratio=0.0, 
+save_config=None, 
+save_data='/Users/sanjana/destruct/destruct/data/rotowire/processed/roto', 
+seed=-1, 
+share_vocab=False, 
+skip_empty_level='warning', 
+src_onmttok_kwargs="{'mode': 'none'}", 
+src_seq_length=200, 
+src_subword_alpha=0, 
+src_subword_model=None, 
+src_subword_nbest=1, 
+src_subword_type='none', src_subword_vocab='', 
+src_vocab='/Users/sanjana/destruct/destruct/data/rotowire/processed/roto.vocab.src', 
+src_vocab_threshold=0, 
+switchout_temperature=1.0, 
+tgt_onmttok_kwargs="{'mode': 'none'}", 
+tgt_seq_length=200, tgt_subword_alpha=0, 
+tgt_subword_model=None, 
+tgt_subword_nbest=1, 
+tgt_subword_type='none', 
+tgt_subword_vocab='', 
+tgt_vocab='/Users/sanjana/destruct/destruct/data/rotowire/processed/roto.vocab.tgt', tgt_vocab_threshold=0, tokendrop_temperature=1.0, tokenmask_temperature=1.0, transforms=[], vocab_sample_queue_size=2
+
+save_model='roto/run/model'
+save_checkpoint_steps: 500
+train_steps: 1000
+valid_steps: 500
+
+
+
+
+#### Commands 
+
+python build_vocab.py -data "{'corpus_1': {'path_src': '/Users/sanjana/destruct/destruct/data/rotowire/processed/src_train.txt', 'path_tgt': '/Users/sanjana/destruct/destruct/data/rotowire/processed/tgt_train.txt'}, 'valid': {'path_src': '/Users/sanjana/destruct/destruct/data/rotowire/processed/src_valid.txt', 'path_tgt': '/Users/sanjana/destruct/destruct/data/rotowire/processed/tgt_valid.txt'}}" -save_data '/Users/sanjana/destruct/destruct/data/rotowire/processed/roto' -src_vocab '/Users/sanjana/destruct/destruct/data/rotowire/processed/roto.vocab.src' -tgt_vocab '/Users/sanjana/destruct/destruct/data/rotowire/processed/roto.vocab.tgt'
+
+python train.py -data "{'corpus_1': {'path_src': '/Users/sanjana/destruct/destruct/data/rotowire/processed/src_train.txt', 'path_tgt': '/Users/sanjana/destruct/destruct/data/rotowire/processed/tgt_train.txt'}, 'valid': {'path_src': '/Users/sanjana/destruct/destruct/data/rotowire/processed/src_valid.txt', 'path_tgt': '/Users/sanjana/destruct/destruct/data/rotowire/processed/tgt_valid.txt'}}"  -src_vocab '/Users/sanjana/destruct/destruct/data/rotowire/processed/roto.vocab.src' -tgt_vocab '/Users/sanjana/destruct/destruct/data/rotowire/processed/roto.vocab.tgt' -save_model '/Users/sanjana/destruct/destruct/roto/run/model' -save_checkpoint_steps 500 -train_steps 1000 -valid_steps 500
